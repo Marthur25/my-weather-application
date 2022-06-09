@@ -8,57 +8,55 @@
     <script src="https://kit.fontawesome.com/7f30b2f0a1.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style3.css" />
-    <title>Meg's Weather App</title>
+    <title>Meg's new weather app</title>
   </head>
   <body>
     <div class="container">
-      <div class="weather-app-wrapper">
-        <div class="weather-app">
-          <form id="search-form" class="mb-3">
-            <div class="row">
-              <div class="col-9">
-                <input type="search" placeholder="Type a city.." class="form-control" id="city-input" autocomplete="off" />
-              </div>
-              <div class="col-3">
-                <input type="submit" value="Search" class="btn btn-outline-primary w-80" />
-              </div>
-              <div class="col-4">
-                <input class="btn btn-outline-success shadow-sm" type="submit" value="Current Location" id="find-location" />
+       <div class="weather-app-wrapper">
+      <div class="weather-app">
+        <h1 id="location">Melbourne VIC, Australia</h1>
+        <form id="search-form">
+          <div class="row">
+            <div class="col-9">
+              <input type="search" placeholder="Search for location" autofocus="on" autocomplete="off" class="form-control shadow-sm" id="city-input" />
+            </div>
+            <div class="col-3">
+              <input class="btn btn-outline-primary shadow-sm" type="submit" value="Search" id="search-location" />
+            </div>
+            <div class="col-4">
+              <input class="btn btn-outline-success shadow-sm" type="submit" value="Current Location" id="find-location" />
+            </div>
+          </div>
+        </form>
+        <br />
+        <ul class="currentDayInfo">
+          <li id="get-time">Thursday 2:00 PM</li>
+          <li>Partly Cloudy</li>
+        </ul>
+        <div class="row">
+          <div class="col-6">
+            <div class="clearfix">
+              <img src="images/partly_cloudy.png" alt="cloudy" class="weather-icon-cloudy float-left" />
+              <div class="float-left">
+                <span class="temperature" id="temperature">19 </span>
+                <span class="units">
+                  <a href="*" id="cellink">°C </a> │ <a href="#" id="fahlink">°F </a>
+                </span>
               </div>
             </div>
-          </form>
-          <div class="overview">
-            <h1 id="city"></h1>
+          </div>
+          <div class="col-6">
             <ul>
-              <li>Last updated: <span id="date"></span>
+              <li>Precipitaion: 0%</li>
+              <li>Humidity: 77%</li>
+              <li>Wind: 8 <a href="@">km/h </a> │ <a href="%">miles/ph </a>
               </li>
-              <li id="description"></li>
             </ul>
           </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="clearfix weather-temperature">
-                <img src="" alt="Clear" id="icon" class="float-left" />
-                <div class="float-left">
-                  <strong id="temperature"></strong>
-                  <span class="units">
-                    <a href="#" id="celsius-link" class="active">°C</a> | <a href="#" id="fahrenheit-link">°F</a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <ul>
-                <li>Humidity: <span id="humidity"></span>% </li>
-                <li>Wind: <span id="wind"></span> km/h </li>
-              </ul>
-            </div>
-          </div>
         </div>
-        <small>
-          Open-source code by<a href="https://github.com/Marthur25/my-weather-application" target="_blank">Meg Arthur</a></small>
+        <div class="author_info"><strong>Open-source code by: </strong> <a href="https://github.com/Marthur25/my-weather-application" target="_blank"><em>Meg Arthur</em></a></div>
       </div>
-    </div>
-    <script src="src/index.js"></script>
+      </div>
+      <script src="src/index3.js"></script>
   </body>
 </html>
