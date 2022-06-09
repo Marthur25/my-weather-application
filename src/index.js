@@ -1,32 +1,30 @@
-//1
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+ function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-let currentTime = new Date();
-let currentDay = days[currentTime.getDay()];
-let currentHour = currentTime.getHours();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-let currentMinutes = currentTime.getMinutes();
-if (currentMinutes < 10) {
-  currentMinutes = `0${currentMinutes}`;
-}
-let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
-
-let time = document.querySelector("#get-time");
-time.innerHTML = `${formatTime}`;
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  let locationElement = document.querySelector("#location");
+  let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
@@ -48,18 +46,18 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function search(city) {
+  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-
-
-
-
-
-
-
-
-
-//2
 function showTemperature(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
@@ -67,27 +65,38 @@ function showTemperature(response) {
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
 
-function convertTofahrenheit(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(temperature * 1.8 + 32);
-}
-let fahlink = document.querySelector("#fahlink");
-fahlink.addEventListener("click", convertTofahrenheit);
 
-function convertToCelsius(event) {
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+
+function displayCelsiusTemperature(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = "19";
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
-let cellink = document.querySelector("#cellink");
-cellink.addEventListener("click", convertToCelsius);
 
-//week 5
+let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahlink");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#cellink");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
 function updateSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#city-input").value;
+  let city = document.querySelector("#city").value;
   searchCity(city);
 }
 
@@ -109,9 +118,6 @@ function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
-
-
-//mine
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", updateSubmit);
