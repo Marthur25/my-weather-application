@@ -22,22 +22,25 @@ li {
   height: 19px;
   line-height: 1;
   list-style: none;
+  padding: 0;
 }
 
-.cloudy-icon {
-  color: teal;
-  font-size: 20px;
+li:first-letter {
+  text-transform: capitalize;
+}
+
+.weather-app-wrapper {
+ max-width: 600px; 
+ margin: 20px auto;
 }
 
 .weather-app {
   border: 1px solid #00e5ee;
-  padding: 15px;
-  margin: 20px auto;
-  border-radius: 15px;
-  max-width: 600px;
+  padding: 15px;  
+  border-radius: 15px;  
 }
 
-.weather-icon-cloudy {
+.weather-temp img {
   height: 64px;
   width: 64px;
   margin-right: 10px;
@@ -52,5 +55,15 @@ li {
 
 .units {
   position: relative;
+  font-size: 16px;
   top: -34px;
+}
+
+.weather-temp .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.weather-temp .active:hover {
+  text-decoration: none;
 }
