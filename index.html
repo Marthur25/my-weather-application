@@ -14,16 +14,16 @@
     <div class="container">
       <div class="weather-app-wrapper">
       <div class="weather-app">
-        <form id="search-form">
-          <div class="row">
-            <div class="col-9">
-              <input type="search" placeholder="Search for location" autofocus="on" autocomplete="off" class="form-control shadow-sm" id="city-input" />
+        <form id="search-form" class="mb-3">
+          <div class="row g-3">
+            <div class="col-sm-7">
+              <input type="search" placeholder="Search location..." autofocus="on" autocomplete="off" class="form-control w-300 shadow-sm" id="city-input" />
             </div>
-            <div class="col-3">
+            <div class="col-sm">
+              <input class="btn btn-outline-success shadow-sm" type="submit" value="My Location" id="find-location" />
+            </div>
+            <div class="col-sm">
               <input class="btn btn-outline-primary shadow-sm" type="submit" value="Search" id="search-location" />
-            </div>
-            <div class="col-4">
-              <input class="btn btn-outline-success shadow-sm" type="submit" value="Current Location" id="find-location" />
             </div>
           </div>
         </form>
@@ -42,7 +42,7 @@
               <div class="float-left">
                 <span class="temperature" id="temperature">19 </span>
                 <span class="units">
-                  <a href="*" id="cellink">°C </a> │ <a href="#" id="fahlink">°F </a>
+                  <a href="*" id="cellink" class="active">°C </a> │ <a href="#" id="fahlink">°F </a>
                 </span>
               </div>
             

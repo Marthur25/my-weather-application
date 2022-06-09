@@ -49,6 +49,27 @@ function convertToCelsius(event) {
 let cellink = document.querySelector("#cellink");
 cellink.addEventListener("click", convertToCelsius);
 
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+
+  cellink.classList.remove("active");
+  fahlink.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  cellink.classList.add("active");
+  fahlink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 //week 5
 function updateSubmit(event) {
   event.preventDefault();

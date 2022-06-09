@@ -29,11 +29,6 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.cloudy-icon {
-  color: teal;
-  font-size: 20px;
-}
-
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -61,4 +56,26 @@ li:first-letter {
 .units {
   position: relative;
   top: -34px;
+}
+
+.weather-temp strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.weather-temp .units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
+.weather-temp .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.weather-temp .active:hover {
+  text-decoration: none;
 }
