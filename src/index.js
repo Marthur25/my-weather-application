@@ -1,4 +1,4 @@
-//1
+//1 date
 let days = [
   "Sunday",
   "Monday",
@@ -24,7 +24,7 @@ let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
 let time = document.querySelector("#get-time");
 time.innerHTML = `${formatTime}`;
 
-//2
+//2 temperature
 function showTemperature(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
@@ -53,11 +53,10 @@ cellink.addEventListener("click", convertToCelsius);
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-
   cellink.classList.remove("active");
   fahlink.classList.add("active");
-  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
@@ -70,7 +69,7 @@ function displayCelsiusTemperature(event) {
 
 let celsiusTemperature = null;
 
-//week 5
+//5 forum submit
 function updateSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
@@ -97,28 +96,21 @@ function searchLocation(position) {
 }
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemperature = response.data.main.temp;
-
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-}
+  }
+  
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", updateSubmit);

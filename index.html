@@ -23,42 +23,40 @@
               <input class="btn btn-outline-success shadow-sm" type="submit" value="My Location" id="find-location" />
             </div>
             <div class="col-sm">
-              <input class="btn btn-outline-primary shadow-sm" type="submit" value="Search" id="search-location" />
+              <input class="btn btn-outline-primary w-80 shadow-sm" type="submit" value="Search" id="search-location" />
             </div>
           </div>
         </form>
         <br />
         <div class="overview">
         <h1 id="location">Melbourne</h1>
-        <ul class="currentDayInfo">
+        <ul>
           <li>Last updated: <span id="get-time"></span></li>
-          <li><span id="description"></span></li>
-          
+          <li id="description"></li>          
         </ul>
         </div>
         <div class="row">
           <div class="col-6">
             <div class="clearfix weather-temp">
-              <img src="images/partly_cloudy.png" alt="cloudy" class="weather-icon-cloudy float-left" />
+              <img src="" alt="Clear" id="icon" class="float-left" />
               <div class="float-left">
-                <span class="temperature" id="temperature">19 </span>
+                <strong class="temperature" id="temperature"></strong>
                 <span class="units">
-                  <a href="*" id="cellink" class="active">°C </a> │ <a href="#" id="fahlink">°F </a>
+                  <a href="#" id="cellink" class="active">°C</a> │ <a href="#" id="fahlink">°F</a>
                 </span>
-              </div>
-            
+              </div>            
             </div>
           </div>
           <div class="col-6">
             <ul>
-              <li>Humidity: 77<span id="humidity"></span>%</li>
-              <li>Wind: 8<span id="wind"></span>km/h</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span>km/h</li>
             </ul>
           </div>
         </div>
         </div>
         <small class="author_info">Open-source code by: <a href="https://github.com/Marthur25/my-weather-application" target="_blank"><em>Meg Arthur</em></a></small>
-      
+      </div>
     </div>
       <script src="src/index.js"></script>
   </body>

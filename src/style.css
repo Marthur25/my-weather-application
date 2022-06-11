@@ -40,10 +40,8 @@ li:first-letter {
   border-radius: 5px;
 }
 
-.weather-icon-cloudy {
-  height: 64px;
-  width: 64px;
-  margin-right: 10px;
+.overview {
+  margin-bottom: 20px;
 }
 
 .temperature {
@@ -56,24 +54,28 @@ li:first-letter {
 .units {
   position: relative;
   top: -34px;
+   color: orangered;
 }
 
 .weather-temp strong {
-  color: rgb(33, 33, 33);
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
+  color: rgb(45, 171, 202);
 }
 
 .weather-temp .units {
   position: relative;
   font-size: 16px;
   top: -34px;
+  text-decoration: none;
+  
 }
 
 .weather-temp .active {
   color: rgb(33, 33, 33);
-  cursor: default;
+  cursor: default; 
+  
 }
 
 .weather-temp .active:hover {
