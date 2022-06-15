@@ -1,7 +1,6 @@
 //1 date
 function formatDate(timestamp) {
 let currentTime = new Date(timestamp);
-let currentDay = days[currentTime.getDay()];
 let currentHour = currentTime.getHours();
 if (currentHour < 10) {
   currentHour = `0${currentHour}`;
@@ -45,13 +44,13 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = 
-  ` <div class="row">`; forecast.forEach(function (forecastDay, index) { if (index < 5) { 
+  ` <div class="row">`; 
+  forecast.forEach(function (forecastDay, index) { 
+    if (index < 5) { 
     forecastHTML +=
     ` <div class="col-2">
     <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-    <img src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png" alt="" width="42" />
+    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42" />
     <div class="weather-forecast-temperatures">
       <span class="weather-forecast-temperature-max"> ${Math.round( forecastDay.temp.max )}° </span>
       <span class="weather-forecast-temperature-min"> ${Math.round( forecastDay.temp.min )}° </span>
@@ -59,6 +58,7 @@ function displayForecast(response) {
 </div> `; 
 } 
 });
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
@@ -67,38 +67,12 @@ function displayForecast(response) {
 let time = document.querySelector("#get-time");
 time.innerHTML = `${formatTime}`;
 
-//2 temperature
-function showTemperature(response) {
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = response.data.name;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-}
-
-//5 forum submit
-function updateSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
-}
-
-function searchCity(city) {
-  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
-}
-
-function getLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
-function searchLocation(position) {
-  let lat = position.coords.latitude;
+function getForecast(coordinates) {
+let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
+axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -122,9 +96,18 @@ function displayTemperature(response) {
   getForecast(response.data.coord);
   }
   
+function searchCity(city) {
+  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", updateSubmit);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
-let updateLocation = document.querySelector("#find-location");
-updateLocation.addEventListener("click", getLocation);
+search("Melbourne");
