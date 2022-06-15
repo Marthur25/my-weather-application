@@ -1,4 +1,3 @@
-//1 date
 function formatDate(timestamp) {
 let currentTime = new Date(timestamp);
 let currentHour = currentTime.getHours();
@@ -39,7 +38,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -64,8 +62,8 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
   let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
@@ -79,6 +77,7 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -97,11 +96,29 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
+
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
 
+function fetchCurrent(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function retrievePosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(fetchCurrent);
+}
+
+let fetchCurrentData = document.querySelector("#fetch-current-data");
+fetchCurrentData.addEventListener("click", retrievePosition);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+search("Melbourne");
