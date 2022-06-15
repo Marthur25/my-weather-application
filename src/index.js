@@ -128,4 +128,3 @@ let fetchCurrentData = document.querySelector("#find-location");
 fetchCurrentData.addEventListener("click", getLocation);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", updateSubmit);
-search("Melbourne");
