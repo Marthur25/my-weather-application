@@ -63,10 +63,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-
-let time = document.querySelector("#get-time");
-time.innerHTML = `${formatTime}`;
-
 function getForecast(coordinates) {
 let lat = position.coords.latitude;
   let lon = position.coords.longitude;
