@@ -117,7 +117,7 @@ function retrievePosition(event) {
   navigator.geolocation.getCurrentPosition(fetchCurrent);
 }
 
-let fetchCurrentData = document.querySelector("#fetch-current-data");
+let fetchCurrentData = document.querySelector("#find-location");
 fetchCurrentData.addEventListener("click", retrievePosition);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
