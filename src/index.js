@@ -1,15 +1,6 @@
 //1 date
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-
-let currentTime = new Date();
+function formatDate(timestamp) {
+let currentTime = new Date(timestamp);
 let currentDay = days[currentTime.getDay()];
 let currentHour = currentTime.getHours();
 if (currentHour < 10) {
@@ -19,7 +10,28 @@ let currentMinutes = currentTime.getMinutes();
 if (currentMinutes < 10) {
   currentMinutes = `0${currentMinutes}`;
 }
-let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+
+  return days[day];
+}
+
 
 let time = document.querySelector("#get-time");
 time.innerHTML = `${formatTime}`;
@@ -31,43 +43,6 @@ function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
-
-function convertTofahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(temperature * 1.8 + 32);
-}
-let fahlink = document.querySelector("#fahlink");
-fahlink.addEventListener("click", convertTofahrenheit);
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = "19";
-}
-let cellink = document.querySelector("#cellink");
-cellink.addEventListener("click", convertToCelsius);
-
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  cellink.classList.remove("active");
-  fahlink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  cellink.classList.add("active");
-  fahlink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
 
 //5 forum submit
 function updateSubmit(event) {
