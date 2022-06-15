@@ -97,10 +97,21 @@ function searchCity(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function handleSubmit(event) {
+function updateSubmit(event) {
   event.preventDefault();
-  let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
+}
+
+function searchCity(city) {
+  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
 function fetchCurrent(position) {
@@ -112,13 +123,9 @@ function fetchCurrent(position) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function retrievePosition(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(fetchCurrent);
-}
 
 let fetchCurrentData = document.querySelector("#find-location");
-fetchCurrentData.addEventListener("click", retrievePosition);
+fetchCurrentData.addEventListener("click", getLocation);
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", updateSubmit);
 search("Melbourne");
