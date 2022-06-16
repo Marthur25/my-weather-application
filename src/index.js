@@ -1,4 +1,14 @@
 function formatDate(timestamp) {
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
 let currentTime = new Date(timestamp);
 let Day = currentTime.getDay(); //4
 let currentDay = days[Day];
@@ -10,15 +20,7 @@ let currentMinutes = currentTime.getMinutes();
 if (currentMinutes < 10) {
   currentMinutes = `0${currentMinutes}`;
 }
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+
 
 let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
 let time = document.querySelector("#date");
