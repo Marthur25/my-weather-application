@@ -7,7 +7,7 @@ if (currentHour < 10) {
 let currentMinutes = currentTime.getMinutes();
 if (currentMinutes < 10) {
   currentMinutes = `0${currentMinutes}`;
-}
+}}
 let days = [
   "Sunday",
   "Monday",
@@ -17,8 +17,19 @@ let days = [
   "Friday",
   "Saturday"
 ];
+
+let currentTime = new Date();
+let currentDay = days[currentTime.getDay()];
+let currentHour = currentTime.getHours();
+if (currentHour < 10) {
+  currentHour = `0${currentHour}`;
+}
+let currentMinutes = currentTime.getMinutes();
+if (currentMinutes < 10) {
+  currentMinutes = `0${currentMinutes}`;
 }
 let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
+
 let time = document.querySelector("#date");
 time.innerHTML = `${formatTime}`;
 
