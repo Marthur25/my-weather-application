@@ -114,9 +114,6 @@ function searchCity(city) {
 
 function getLocation(event) {
   event.preventDefault();
-
-  let searchLocation = document.getElementById(search-location).value();
-  alert(searchLocation);
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
