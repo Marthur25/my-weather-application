@@ -17,9 +17,11 @@ let days = [
   "Friday",
   "Saturday"
 ];
+
+let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
+let time = document.querySelector("#get-time");
+time.innerHTML = `${formatTime}`;
 }
-
-
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -76,7 +78,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDay(response.data.dt);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
