@@ -17,11 +17,11 @@ let days = [
   "Friday",
   "Saturday"
 ];
-
+}
 let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
 let time = document.querySelector("#get-time");
 time.innerHTML = `${formatTime}`;
-}
+
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
