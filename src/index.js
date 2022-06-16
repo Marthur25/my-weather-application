@@ -27,15 +27,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-
-  return days[day];
-}
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -123,5 +114,3 @@ let fetchCurrentData = document.querySelector("#find-location");
 fetchCurrentData.addEventListener("click", getLocation);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", updateSubmit);
-
-search("New York");
