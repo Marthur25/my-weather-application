@@ -1,31 +1,28 @@
 function formatDate(timestamp) {
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let currentTime = new Date(timestamp);
-let Day = currentTime.getDay(); //4
-let currentDay = days[Day];
-let currentHour = currentTime.getHours();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`;
-}
-let currentMinutes = currentTime.getMinutes();
-if (currentMinutes < 10) {
-  currentMinutes = `0${currentMinutes}`;
-}
+  let currentTime = new Date(timestamp);
+  let Day = currentTime.getDay(); //4
+  let currentDay = days[Day];
+  let currentHour = currentTime.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  let currentMinutes = currentTime.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
 
-
-let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
-let time = document.querySelector("#date");
-time.innerHTML = `${formatTime}`;
-
+  let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
+  return formatTime;
 }
 
 
@@ -75,7 +72,7 @@ function displayTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  let dateElement = document.querySelector("#date");
+  let dateElement = document.querySelector("#get-time");
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
