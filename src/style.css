@@ -1,5 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: blueviolet
 }
 
 h1 {
@@ -19,7 +20,6 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
-  color: grey;
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
@@ -38,6 +38,7 @@ li:first-letter {
   padding: 20px;
   border: 1px solid #00e5ee;
   border-radius: 5px;
+  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 }
 
 .overview {
@@ -51,12 +52,6 @@ li:first-letter {
   line-height: 1;
 }
 
-.units {
-  position: relative;
-  top: -34px;
-   color: orangered;
-}
-
 .weather-temp strong {
   font-size: 64px;
   line-height: 1;
@@ -67,17 +62,6 @@ li:first-letter {
 .weather-temp .units {
   position: relative;
   font-size: 16px;
-  top: -34px;
-  text-decoration: none;
-  
+  top: -34px; 
 }
 
-.weather-temp .active {
-  color: rgb(33, 33, 33);
-  cursor: default; 
-  
-}
-
-.weather-temp .active:hover {
-  text-decoration: none;
-}
