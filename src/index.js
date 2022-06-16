@@ -23,7 +23,7 @@ if (currentMinutes < 10) {
 
 
 let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
-let time = document.querySelector("#date");
+let time = document.querySelector("#get-time");
 time.innerHTML = `${formatTime}`;
 
 }
