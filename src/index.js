@@ -114,6 +114,9 @@ function searchCity(city) {
 
 function getLocation(event) {
   event.preventDefault();
+
+  let searchLocation = document.getElementById(search-location).value();
+  alert(searchLocation);
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
@@ -131,3 +134,5 @@ let fetchCurrentData = document.querySelector("#find-location");
 fetchCurrentData.addEventListener("click", getLocation);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", updateSubmit);
+
+search("New York");
