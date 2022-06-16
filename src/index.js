@@ -1,5 +1,7 @@
 function formatDate(timestamp) {
 let currentTime = new Date(timestamp);
+let Day = currentTime.getDay(); //4
+let currentDay = days[Day];
 let currentHour = currentTime.getHours();
 if (currentHour < 10) {
   currentHour = `0${currentHour}`;
@@ -7,7 +9,7 @@ if (currentHour < 10) {
 let currentMinutes = currentTime.getMinutes();
 if (currentMinutes < 10) {
   currentMinutes = `0${currentMinutes}`;
-}}
+}
 let days = [
   "Sunday",
   "Monday",
@@ -18,20 +20,11 @@ let days = [
   "Saturday"
 ];
 
-let currentTime = new Date();
-let currentDay = days[currentTime.getDay()];
-let currentHour = currentTime.getHours();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`;
-}
-let currentMinutes = currentTime.getMinutes();
-if (currentMinutes < 10) {
-  currentMinutes = `0${currentMinutes}`;
-}
 let formatTime = `${currentDay} ${currentHour}:${currentMinutes}`;
-
 let time = document.querySelector("#date");
 time.innerHTML = `${formatTime}`;
+
+}
 
 
 function formatDay(timestamp) {
@@ -89,7 +82,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDay(response.data.dt).toLocalString();
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
