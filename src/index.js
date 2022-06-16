@@ -17,8 +17,6 @@ let days = [
   "Friday",
   "Saturday"
 ];
-  let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -66,7 +64,7 @@ function getForecast(coordinates) {
   let lat = coordinates.lat;
   let lon = coordinates.lon;
   let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
 }
 
@@ -106,15 +104,9 @@ function updateSubmit(event) {
   searchCity(city.value);
 }
 
-function searchCity(city) {
-  let apiKey = "be6a30eb882e3e9dfeb3beff3e0189d0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
-}
-
 function getLocation(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
+  navigator.geolocation.getCurrentPosition(fetchCurrent);
 }
 
 function fetchCurrent(position) {
