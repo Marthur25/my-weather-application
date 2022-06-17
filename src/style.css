@@ -4,11 +4,15 @@ body {
 }
 
 h1 {
-  color: grey;
-  font-size: 24px;
+  color:purple;
+  font-size: 32px;
   font-weight: 100;
   line-height: 28px;
   margin: 0, 5px;
+}
+
+h3 {
+  color:purple;  
 }
 
 ul {
@@ -64,4 +68,28 @@ li:first-letter {
   font-size: 16px;
   top: -34px; 
 }
+
+.sixdayforecast {
+text-align:center
+}
+
+.weather-forecast-date {
+  color:rgb(73, 128, 230);  
+}
+
+.weather-forecast-temperature-min {
+ color:rgb(14, 124, 151);
+}
+
+.weather-forecast-temperature-max {
+color:rgb(14, 151, 94);
+}
+.humidity-heading{
+color:purple;
+}
+
+.wind-heading{
+color:purple;
+}
+
 
