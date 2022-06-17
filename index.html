@@ -20,10 +20,10 @@
               <input type="search" placeholder="Search location..." autofocus="on" autocomplete="off" class="form-control w-300 shadow-sm" id="city-input" />
             </div>
             <div class="col-sm">
-              <input class="btn btn-outline-success shadow-sm" type="submit" value="My Location" id="find-location" />
+              <input class="btn btn-outline-primary shadow-sm" type="submit" value="My Location" id="find-location" />
             </div>
             <div class="col-sm">
-              <input class="btn btn-outline-primary w-80 shadow-sm" type="submit" value="Search" id="searchLocation" />
+              <input class="btn btn-outline-secondary w-80 shadow-sm" type="submit" value="Search" id="searchLocation" />
             </div>
           </div>
         </form>
@@ -32,24 +32,27 @@
         <h1 id="city">Weather app</h1>
         <ul>
           <li>Last updated: <span id="get-time"></span></li>
-          <li id="description"></li>   
-        <h2>Today</h2>          
+             
+                
         </ul>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
+            <h3>Today</h3>  
             <div class="weather-temperature">
               <strong class="temperature" id="temperature"></strong>
                 <span class="units">  <span class="units">°C</span>
-              <img src="" alt="" id="icon" />
-                
-                       
+                  
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <li id="description"></li>
+            <img src="" alt="" id="icon" />
+          </div>
+          <div class="col-4">
             <ul>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span>km/h</li>
+              <li class="humidity-heading">Humidity: <span id="humidity"></span>%</li>
+              <li class="wind-heading">Wind: <span id="wind"></span>km/h</li>
             </ul>
           </div>
         </div>
